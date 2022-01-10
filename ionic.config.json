@@ -1,0 +1,7 @@
+{
+  "name": "Healt Food",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
