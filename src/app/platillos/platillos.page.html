@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ platillos }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" style="text-align: center;">{{ platillos }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-list lines="true">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre" type="text" maxlength=50 required=true inputmode="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Categoría</ion-label>
+      <ion-select [(ngModel)]="categoria" interface="popover" required=true>
+        <ion-select-option value="desayuno">desayuno</ion-select-option>
+        <ion-select-option value="almuerzo">almuerzo</ion-select-option>
+        <ion-select-option value="cena">cena</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Detalles</ion-label>
+      <ion-input [(ngModel)]="detalles" type="text" maxlength=250 required=true inputmode="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input [(ngModel)]="precio" type="number" min=0 inputmode="decimal"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position=>Promoción</ion-label>
+      <ion-toggle [(ngModel)]="promocion" slot="end" color="primary"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descuento</ion-label>
+      <ion-input [(ngModel)]="descuento" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Imagen</ion-label>
+      <ion-input type="file" (change)="onFileChanges($event)" accept=".png, .jpg, .jpeg"></ion-input>
+    </ion-item>
+    <ion-button (click)="addPlatillo()" type="button" expand="block" shape="round" color="success">Añadir Platillo</ion-button>
+  </ion-list>
+
+
+  <ion-list>
+    <ion-list-header style="text-align: center;">
+      Lista de Platillos
+    </ion-list-header>
+    <ion-item  lines="inset" *ngFor="let platillo of ArrayPlatillos">
+      <ion-avatar slot="start" [routerLink]="['/platillos', platillo.idPlatillo]">
+        <ion-img [src]="platillo.imagen"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        {{platillo.nombre}} - {{platillo.precio}}
+      </ion-label>
+      <div class="item-note">
+        <ion-icon name="information-circle" style="zoom: 2.0;" [routerLink]="['/platillos', platillo.idPlatillo]"></ion-icon>
+        <ion-icon name="create" style="zoom: 2.0;" [routerLink]="['/platillos/updatePlatillo', platillo.idPlatillo]"></ion-icon>
+        <ion-icon name="trash" style="zoom: 2.0;" (click)="deletePlatillo(platillo.idPlatillo)"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
