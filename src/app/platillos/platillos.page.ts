@@ -31,7 +31,7 @@ export class PlatillosPage implements OnInit {
 
   base64Data:any;
   converted_image:any;
-  
+
 
   constructor(public _platilloService: PlatillosService) {
     this.getPlatillos();
@@ -78,7 +78,7 @@ export class PlatillosPage implements OnInit {
     let data = {
       nombre: this.nombre,
       categoria: this.categoria,
-      detalles: this.detalles,
+      detalle: this.detalles,
       precio: this.precio,
       promocion: this.promocion,
       descuento: this.descuento,

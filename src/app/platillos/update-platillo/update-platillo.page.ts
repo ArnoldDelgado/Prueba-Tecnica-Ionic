@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Observable, Subscriber } from 'rxjs';
 import { PlatillosService } from '../platillos.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -88,10 +87,11 @@ export class UpdatePlatilloPage implements OnInit {
   }
 
   updatePlatillo(){
+    console.log(this.nombre, this.categoria, this.detalles, this.precio, this.promocion, this.descuento, this.imagen);
     let data = {
       nombre: this.nombre,
       categoria: this.categoria,
-      detalles: this.detalles,
+      detalle: this.detalles,
       precio: this.precio,
       promocion: this.promocion,
       descuento: this.descuento,
@@ -106,5 +106,9 @@ export class UpdatePlatilloPage implements OnInit {
     }
     )
   }
+
+
+
+
 
 }

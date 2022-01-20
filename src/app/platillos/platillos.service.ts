@@ -9,22 +9,22 @@ export class PlatillosService {
   constructor(public http:HttpClient) { }
 
   addPlatillo(data){
-    return this.http.post("http://localhost/Prueba-Tecnica/WebService/createPlatillo.php",data);
+    return this.http.post("http://localhost:60710/api/platillo",data);
   }
 
   getPlatillos(){
-    return this.http.get("http://localhost/Prueba-Tecnica/WebService/getPlatillos.php");
+    return this.http.get("http://localhost:60710/api/platillo");
   }
 
   deletePlatillo(id){
-    return this.http.delete("http://localhost/Prueba-Tecnica/WebService/deletePlatillo.php?id="+id);
+    return this.http.delete("http://localhost:60710/api/platillo/"+id);
   }
 
   getPlatillo(id){
-    return this.http.get("http://localhost/Prueba-Tecnica/WebService/getPlatillo.php?id="+id);
+    return this.http.get("http://localhost:60710/api/platillo/"+id);
   }
 
   updatePlatillo(id, data){
-    return this.http.put("http://localhost/Prueba-Tecnica/WebService/updatePlatillos.php?id="+id,data);
+    return this.http.put("http://localhost:60710/api/platillo/"+id, data);
   }
 }
